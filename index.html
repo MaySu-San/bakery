@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vite App</title>
+  </head>
+  <body>
+    <main
+      id="app"
+      class="flex flex-col min-h-screen dark:bg-gray-900 dark:text-gray-100 bg-gray-50 text-gray-900"
+    >
+      <header class="flex border-b border-gray-200 justify-between px-4 py-2.5">
+        <h1 class="font-heading font-bold">Coo' Bakery</h1>
+        <div class="flex gap-5">
+          <button
+            id="theme-toggle"
+            type="button"
+            class="text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-lg text-sm"
+          >
+            <span id="theme-toggle-dark-icon" class="hidden size-4">
+              <i data-lucide="moon"></i>
+            </span>
+            <span id="theme-toggle-light-icon" class="hidden size-4">
+              <i data-lucide="sun"></i>
+            </span>
+          </button>
+          <button
+            type="button"
+            class="text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-lg text-sm"
+          >
+            <span id="theme-toggle-light-icon" class="size-4">
+              <i data-lucide="refresh-ccw"></i>
+            </span>
+          </button>
+          <button
+            type="button"
+            class="text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-lg text-sm"
+          >
+            <span id="theme-toggle-light-icon" class="size-4">
+              <i data-lucide="bell-ring"></i>
+            </span>
+          </button>
+          <button
+            type="button"
+            class="text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-lg text-sm"
+          >
+            <span id="theme-toggle-light-icon" class="size-4">
+              <i data-lucide="user-round"></i>
+            </span>
+          </button>
+        </div>
+      </header>
+      <section class="flex-1 grid grid-cols-7">
+        <div
+          class="col-span-5 relative bg-gray-100 h-full border-r border-gray-200"
+        >
+          <button
+            data-drawer-target="create-product-drawer"
+            data-drawer-show="create-product-drawer"
+            aria-controls="create-product-drawer"
+            class="active:scale-90 hover:scale-90 duration-200 bg-blue-600 size-12 items-center justify-center rounded-full text-white absolute bottom-5 right-5 flex"
+          >
+            <i data-lucide="plus" class="size-5"></i>
+          </button>
+          <div class="items-center p-5 flex justify-between">
+            <h3 class="font-heading text-2xl">Sale Screen</h3>
+
+            <div id="search-form">
+              <label
+                for="default-search"
+                class="text-gray-900 mb-2 text-sm font-medium sr-only dark:text-white"
+                >Search</label
+              >
+              <div class="relative">
+                <div
+                  class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none"
+                >
+                  <i class="size-4 text-gray-500" data-lucide="search"></i>
+                </div>
+                <input
+                  type="search"
+                  name="search"
+                  id="search"
+                  class="block w-full px-4 py-2 ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                  placeholder="Search "
+                  required
+                />
+              </div>
+            </div>
+          </div>
+          <div class="grid grid-cols-6 gap-5 px-5">
+            <div class="col-span-1">
+              <div id="category-list" class="flex flex-col gap-3 mb-6">
+                
+              </div>
+              <div class="flex justify-end w-full">
+                <button
+                  data-drawer-target="create-category-drawer"
+                  data-drawer-show="create-category-drawer"
+                  aria-controls="create-category-drawer"
+                  class="active:scale-90 hover:scale-90 duration-200 flex text-end text-sm items-center gap-1 bg-transparent border border-transparent rounded-lg px-4 py-2"
+                >
+                  <i data-lucide="plus" class="size-3"></i>
+                  <span>Create</span>
+                </button>
+              </div>
+            </div>
+            <div class="col-span-5 overflow-scroll h-[680px]">
+              <div id="product-list" class="grid grid-cols-4 gap-5">
+                
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-span-2 h-full flex flex-col">
+          <h3 class="p-5 font-heading text-2xl text-end">Order Items</h3>
+          <div class="flex flex-col" id="order-list">
+            <div class="order-card px-5 py-3 border-b border-gray-200">
+              <div class="items-start flex justify-between mb-2">
+                <p class="text-sm">Extra Cheesy pepperoni Pizza</p>
+                <div class="flex items-center gap-1">
+                  <button class="bg-blue-50 border border-blue-300 rounded p-1">
+                    <i data-lucide="minus" class="size-3 text-blue-600"></i>
+                  </button>
+                  <p class="text-sm font-mono w-5 text-end">1</p>
+                  <button class="bg-blue-50 border border-blue-300 rounded p-1">
+                    <i data-lucide="plus" class="size-3 text-blue-600"></i>
+                  </button>
+                </div>
+              </div>
+              <div class="text-gray-500 flex justify-between">
+                <div class="flex gap-2 items-center">
+                  <p class="font-mono text-sm">1</p>
+                  <p class="font-mono text-sm">x</p>
+                  <p class="font-mono text-sm">1500</p>
+                </div>
+                <p class="font-mono text-sm">1500</p>
+              </div>
+            </div>
+            <div class="order-card px-5 py-3 border-b border-gray-200">
+              <div class="items-start flex justify-between mb-2">
+                <p class="text-sm">Extra Cheesy pepperoni Pizza</p>
+                <div class="flex items-center gap-1">
+                  <button class="bg-blue-50 border border-blue-300 rounded p-1">
+                    <i data-lucide="minus" class="size-3 text-blue-600"></i>
+                  </button>
+                  <p class="text-sm font-mono w-5 text-end">1</p>
+                  <button class="bg-blue-50 border border-blue-300 rounded p-1">
+                    <i data-lucide="plus" class="size-3 text-blue-600"></i>
+                  </button>
+                </div>
+              </div>
+              <div class="text-gray-500 flex justify-between">
+                <div class="flex gap-2 items-center">
+                  <p class="font-mono text-sm">1</p>
+                  <p class="font-mono text-sm">x</p>
+                  <p class="font-mono text-sm">1500</p>
+                </div>
+                <p class="font-mono text-sm">1500</p>
+              </div>
+            </div>
+            <div class="order-card px-5 py-3 border-b border-gray-200">
+              <div class="items-start flex justify-between mb-2">
+                <p class="text-sm">Extra Cheesy pepperoni Pizza</p>
+                <div class="flex items-center gap-1">
+                  <button class="bg-blue-50 border border-blue-300 rounded p-1">
+                    <i data-lucide="minus" class="size-3 text-blue-600"></i>
+                  </button>
+                  <p class="text-sm font-mono w-5 text-end">1</p>
+                  <button class="bg-blue-50 border border-blue-300 rounded p-1">
+                    <i data-lucide="plus" class="size-3 text-blue-600"></i>
+                  </button>
+                </div>
+              </div>
+              <div class="text-gray-500 flex justify-between">
+                <div class="flex gap-2 items-center">
+                  <p class="font-mono text-sm">1</p>
+                  <p class="font-mono text-sm">x</p>
+                  <p class="font-mono text-sm">1500</p>
+                </div>
+                <p class="font-mono text-sm">1500</p>
+              </div>
+            </div>
+          </div>
+          <div class="p-5" id="summary">
+            <table class="text-sm text-end w-full font-mono text-gray-600">
+              <tbody>
+                <tr>
+                  <td class="py-1">Total:</td>
+                  <td class="py-1">10500</td>
+                </tr>
+                <tr>
+                  <td class="py-1">Tax(5%)</td>
+                  <td class="py-1">500</td>
+                </tr>
+                <tr>
+                  <td class="py-1">Total:</td>
+                  <td class="py-1">11000</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="px-5 mt-auto">
+            <div class="flex justify-end gap-3 mb-3">
+              <div class="flex items-center">
+                <input
+                  id="inline-radio"
+                  type="radio"
+                  value=""
+                  name="inline-radio-group"
+                  class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
+                />
+                <label
+                  for="inline-radio"
+                  class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+                  >Dine in</label
+                >
+              </div>
+              <div class="flex items-center">
+                <input
+                  id="inline-2-radio"
+                  type="radio"
+                  value=""
+                  name="inline-radio-group"
+                  class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
+                />
+                <label
+                  for="inline-2-radio"
+                  class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+                  >Take Away</label
+                >
+              </div>
+            </div>
+            <button
+              type="button"
+              class="w-full mb-5 text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
+            >
+              Check Out
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <!-- drawer component -->
+      <div
+        id="create-product-drawer"
+        class="fixed top-0 left-0 z-40 h-screen p-4 overflow-y-auto transition-transform -translate-x-full bg-white w-80 dark:bg-gray-800"
+        tabindex="-1"
+        aria-labelledby="drawer-label"
+      >
+        <h5
+          id="drawer-label"
+          class="inline-flex mb-10 items-center text-base font-semibold text-gray-500 dark:text-gray-400"
+        >
+          Create New Product
+        </h5>
+        <button
+          type="button"
+          data-drawer-hide="create-product-drawer"
+          aria-controls="create-product-drawer"
+          class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 absolute top-2.5 end-2.5 flex items-center justify-center dark:hover:bg-gray-600 dark:hover:text-white"
+        >
+          <i data-lucide="x"></i>
+          <span class="sr-only">Close menu</span>
+        </button>
+        <form id="create-product-form" action="">
+          
+          <div class="mb-4">
+            <label
+              for="new_product_image"
+              class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+              >New Product Name</label
+            >
+            <input
+              type="file"
+              id="new_product_image"
+              name="new_product_image"
+              class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+              placeholder=""
+              required
+            />
+          </div>
+          <div class="mb-4">
+            <label
+              for="new_product_name"
+              class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+              >New Product Name</label
+            >
+            <input
+              type="text"
+              id="new_product_name"
+              name="new_product_name"
+              class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+              placeholder="eg-Hot Chocolate"
+              required
+            />
+          </div>
+          <div class="mb-4">
+            <label
+              for="new_product_price"
+              class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+              >Product Price</label
+            >
+            <input
+              type="number"
+              id="new_product_price"
+              name="new_product_price"
+              class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+              placeholder="3500"
+              required
+            />
+          </div>
+          <div class="mb-6">
+            <label
+              for="new_product_category"
+              class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+              >Product Category</label
+            >
+            <input
+              type="text"
+              id="new_product_category"
+              name="new_product_category"
+              class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+              placeholder="eg-Drink"
+              required
+            />
+          </div>
+          <div class="flex items-start mb-4">
+            <div class="flex items-center h-5">
+              <input
+                id="remember"
+                type="checkbox"
+                value=""
+                class="w-4 h-4 border border-gray-300 rounded-sm bg-gray-50 focus:ring-3 focus:ring-blue-300 dark:bg-gray-700 dark:border-gray-600 dark:focus:ring-blue-600 dark:ring-offset-gray-800"
+                required
+              />
+            </div>
+            <label
+              for="remember"
+              class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+            >
+              I'm sure to create this product.
+            </label>
+          </div>
+
+          <div>
+            <button
+              data-drawer-hide="create-product-drawer"
+              aria-controls="create-product-drawer"
+              type="button"
+              href="#"
+              class="px-5 py-2.5 text-sm font-medium text-center text-gray-900 bg-white border border-gray-200 rounded-lg focus:outline-none hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700"
+            >
+              Cancel
+            </button>
+            <button
+              type="submit"
+              class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+            >
+              Save
+            </button>
+          </div>
+        </form>
+
+      </div>
+<!-- create-category-drawer component -->
+      <div
+        id="create-category-drawer"
+        class="fixed top-0 left-0 z-40 h-screen p-4 overflow-y-auto transition-transform -translate-x-full bg-white w-80 dark:bg-gray-800"
+        tabindex="-1"
+        aria-labelledby="drawer-label"
+      >
+        <h5
+          id="drawer-label"
+          class="inline-flex items-center mb-10 text-base font-semibold text-gray-500 dark:text-gray-400"
+        >
+          Create New Category
+        </h5>
+        <button
+          type="button"
+          data-drawer-hide="create-category-drawer"
+          aria-controls="create-category-drawer"
+          class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 absolute top-2.5 end-2.5 flex items-center justify-center dark:hover:bg-gray-600 dark:hover:text-white"
+        >
+          <i data-lucide="x"></i>
+          <span class="sr-only">Close menu</span>
+        </button>
+
+        <form id="create-category-form" action="">
+          <div class="mb-6">
+            <label
+              for="new_category_name"
+              class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+              >New Category Name</label
+            >
+            <input
+              type="text"
+              id="new_category_name"
+              name="new_category_name"
+              class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+              placeholder="eg-Drink"
+              required
+            />
+          </div>
+          <div class="flex items-start mb-4">
+            <div class="flex items-center h-5">
+              <input
+                id="remember"
+                type="checkbox"
+                value=""
+                class="w-4 h-4 border border-gray-300 rounded-sm bg-gray-50 focus:ring-3 focus:ring-blue-300 dark:bg-gray-700 dark:border-gray-600 dark:focus:ring-blue-600 dark:ring-offset-gray-800"
+                required
+              />
+            </div>
+            <label
+              for="remember"
+              class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+            >
+              I'm sure to create this category.
+            </label>
+          </div>
+
+          <div>
+            <button
+              data-drawer-hide="create-category-drawer"
+              aria-controls="create-category-drawer"
+              type="button"
+              href="#"
+              class="px-5 py-2.5 text-sm font-medium text-center text-gray-900 bg-white border border-gray-200 rounded-lg focus:outline-none hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700"
+            >
+              Cancel
+            </button>
+            <button
+              type="submit"
+              class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+            >
+              Save
+            </button>
+          </div>
+        </form>
+      </div>
+
+      <template id="product-template">
+        <div
+                  class="product-card border border-gray-200 rounded-lg bg-white"
+                >
+                  <img
+                    class="h-36 w-full object-cover product-img"
+                    src="https://i.pinimg.com/736x/df/5a/6f/df5a6fb9586961fc539bc13ee7f5ec25.jpg"
+                    alt=""
+                  />
+                  <div class="p-3 flex flex-col h-[140px]">
+                    
+                    <div>
+                      <span
+                      class="border product-category-name border-blue-300 text-blue-500 rounded text-xs px-2 py-0.5"
+                      >Pizza</span
+                    >
+                    </div>
+                    <h3 class="product-name line-clamp-2 text-sm my-2">
+                      Extra Cheesy pepperoni Pizza
+                    </h3>
+                    <div class="mt-auto flex gap-2 items-center text-gray-500">
+                      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 8.25h19.5M2.25 9h19.5m-16.5 5.25h6m-6 2.25h3m-3.75 3h15a2.25 2.25 0 0 0 2.25-2.25V6.75A2.25 2.25 0 0 0 19.5 4.5h-15a2.25 2.25 0 0 0-2.25 2.25v10.5A2.25 2.25 0 0 0 4.5 19.5Z" />
+                      </svg>
+                      
+                      <p class="text-sm">
+                        <span class="font-mono product-price ">20000</span>
+                        Kyats
+                      </p>
+                    </div>
+                  </div>
+                </div>
+      </template>
+    </main>
+
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>
